@@ -1,0 +1,19 @@
+.form__input_type_popup {
+    all: unset;
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    line-height: 16.94px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    padding-bottom: 10px;
+}
+
+.form__input_type_popup:last-of-type {
+    margin-top: 3px;
+}
+
+.form__input_type_popup:-webkit-autofill,
+.form__input_type_popup:-webkit-autofill:hover,
+.form__input_type_popup:-webkit-autofill:focus {
+    -webkit-text-fill-color: black;
+    -webkit-box-shadow: 0 0 0px 40rem white inset;
+}

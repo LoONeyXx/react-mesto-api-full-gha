@@ -1,0 +1,14 @@
+.form__submit {
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    background: rgb(255, 255, 255);
+    text-align: center;
+    font-size: 18px;
+    line-height: 21.78px;
+}
+
+@media screen and (max-width: 980px) {
+    .form__submit_type_popup {
+        font-size: 14px;
+        line-height: 17px;
+    }
+}

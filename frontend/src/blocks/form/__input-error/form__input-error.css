@@ -1,0 +1,13 @@
+.form__input-error {
+    box-sizing: border-box;
+    color: #ff0000;
+    font-size: 12px;
+    line-height: 15px;
+    margin-top: 5px;
+    visibility: hidden;
+    min-height: 30px;
+}
+
+.form__input-error:last-of-type {
+    margin-bottom: 13px;
+}

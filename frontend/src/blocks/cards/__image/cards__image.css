@@ -1,0 +1,11 @@
+.cards__image {
+  width: 100%;
+  background-size: cover;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  object-fit: cover;
+  flex-grow: 1;
+  height: 282px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}

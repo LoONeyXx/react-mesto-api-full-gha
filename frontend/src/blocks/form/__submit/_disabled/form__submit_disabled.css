@@ -1,0 +1,15 @@
+.form__submit_disabled {
+    border: 1px solid #000000;
+    border-radius: 2px;
+    color: #000000;
+    opacity: 0.2;
+    background-color: #fff;
+    cursor: default;
+    pointer-events: none;
+}
+
+@media (hover: hover) {
+    .form__submit_disabled:hover {
+        background-color: #fff;
+    }
+}

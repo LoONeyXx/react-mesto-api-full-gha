@@ -1,0 +1,9 @@
+.opacity {
+    transition: opacity 0.2s linear;
+}
+
+@media (hover: hover) {
+    .opacity:hover {
+        opacity: 0.6;
+    }
+}

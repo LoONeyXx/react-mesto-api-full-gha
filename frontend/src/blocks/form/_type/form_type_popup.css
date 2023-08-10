@@ -1,0 +1,7 @@
+.form_type_popup {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    display: flex;
+    flex-direction: column;
+}

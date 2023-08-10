@@ -1,0 +1,13 @@
+.content {
+  margin: 0 auto;
+  flex-grow: 1;
+  width: 68.75%;
+  max-width: 880px;
+}
+
+@media screen and (max-width: 980px) {
+  .content {
+    width: 88.125%;
+    min-width: 282px;
+  }
+}

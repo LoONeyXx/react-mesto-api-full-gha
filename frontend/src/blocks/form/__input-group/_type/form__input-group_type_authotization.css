@@ -1,0 +1,6 @@
+.form__input-group_type_authorization {
+    all: unset;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}

@@ -1,0 +1,8 @@
+.log-in-out {
+    all: unset;
+    cursor: pointer;
+    color: white;
+    font-size: 18px;
+    line-height: 22px;
+    align-self: center;
+}
