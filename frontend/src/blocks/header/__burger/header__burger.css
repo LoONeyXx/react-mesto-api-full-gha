@@ -1,0 +1,34 @@
+.header__burger {
+    display: none;
+}
+
+@media screen and (max-width: 980px) {
+    .header__burger {
+        width: 24px;
+        height: 24px;
+        position: relative;
+        margin-right: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+    }
+
+    .header__burger:after,
+    .header__burger:before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 4px;
+        background-color: white;
+        left: 0;
+        transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .header__burger:after {
+        top: 0;
+    }
+    .header__burger:before {
+        bottom: 0;
+    }
+}

@@ -1,0 +1,19 @@
+.cards__like-btn {
+  box-sizing: border-box;
+  -webkit-transition: all 0.1s linear;
+  transition: all 0.1s linear;
+  min-width: 22px;
+  min-height: 19px;
+  display: flex;
+  background-image: url('../../../images/like.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media (hover:hover) {
+  .cards__like-btn:hover {
+    opacity: 0.5;
+  }
+}

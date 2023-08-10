@@ -1,0 +1,7 @@
+.form {
+    margin: 0;
+    font-family: "Inter", Arial, Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}

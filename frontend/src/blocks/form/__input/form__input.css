@@ -1,0 +1,15 @@
+.form__input {
+    all: unset;
+    color: white;
+    border-bottom: 2px solid white;
+    padding-bottom: 12px;
+    font-size: 14px;
+    line-height: 16.94px;
+}
+
+.form__input:-webkit-autofill,
+.form__input:-webkit-autofill:hover,
+.form__input:-webkit-autofill:focus {
+    -webkit-text-fill-color: white;
+    -webkit-box-shadow: 0 0 0px 40rem black inset;
+}

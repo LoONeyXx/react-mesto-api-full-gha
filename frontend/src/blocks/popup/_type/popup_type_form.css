@@ -1,0 +1,9 @@
+.popup_type_form {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+}

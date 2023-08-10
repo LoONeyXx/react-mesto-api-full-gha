@@ -1,0 +1,10 @@
+.popup__image {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    max-width: 75vw;
+    max-height: 75vh;
+    object-fit: cover;
+    flex-grow: 1;
+}

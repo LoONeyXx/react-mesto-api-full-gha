@@ -1,0 +1,21 @@
+.form__submit_type_popup {
+    font-size: 18px;
+    line-height: 21.78px;
+    background-color: #000;
+    color: #ffffff;
+    height: 50px;
+    border-radius: 2px;
+    transition: background-color 0.15s linear;
+}
+
+@media (hover: hover) {
+    .form__submit_type_popup:hover {
+        background-color: rgba(0, 0, 0, 0.8);
+    }
+}
+
+@media screen and (max-width: 980px) {
+    .form__submit_type_popup {
+        height: 46px;
+    }
+}
