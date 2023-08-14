@@ -11,8 +11,8 @@ import router from './routes/index.js';
 import errorHandler from './middlewares/error.js';
 
 dotaenv.config();
-const PORT = 4000 || process.env.PORT;
-const BASE_URL = 'mongodb://127.0.0.1:27017/mestodb' || process.env.DB_URL
+const PORT = process.env.PORT || 4000;
+const BASE_URL = process.env.DB_URL || 'mongodb://127.0.0.1:27017/mestodb';
 const app = express();
 app.use(helmet());
 app.use(cookieParser());
@@ -23,4 +23,6 @@ app.use(router);
 mongoose.connect(BASE_URL);
 app.use(errors());
 app.use(errorHandler);
-app.listen(PORT);
+app.listen(PORT, () => {
+  console.log(PORT)
+});
