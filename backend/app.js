@@ -1,3 +1,5 @@
+import dotaenv from 'dotenv';
+
 import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
@@ -7,8 +9,10 @@ import helmet from 'helmet';
 import { errors } from 'celebrate';
 import router from './routes/index.js';
 import errorHandler from './middlewares/error.js';
-import { PORT, BASE_URL } from './utils/config.js';
 
+dotaenv.config();
+const PORT = 4000 || process.env.PORT;
+const BASE_URL = 'mongodb://127.0.0.1:27017/mestodb' || process.env.DB_URL
 const app = express();
 app.use(helmet());
 app.use(cookieParser());
