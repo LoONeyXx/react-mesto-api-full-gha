@@ -34,7 +34,7 @@ function App() {
         []
     );
 
-    const [loggedIn, setLogin] = React.useState(true);
+    const [loggedIn, setLogin] = React.useState(false);
     const [selectedCard, setSelectCard] = React.useState({
         name: '',
         link: '',
@@ -47,31 +47,30 @@ function App() {
     const [toolTip, setToolTip] = React.useState({});
     const navigate = useNavigate();
 
-    function handleLogout() {
-        setLogin(false);
-        localStorage.removeItem('token');
-        setCurrentUser({});
+    async function handleLogout() {
+        try {
+            auth.logout()
+            setLogin(false);
+            setCurrentUser({});
+        }
+        catch(error) {
+            console.log(error)
+        }
+
     }
     async function startRender() {
         try {
             const newCards = await Api.getCardsInfo();
             const newInfo = await Api.getProfileInfo();
-            setCurrentUser((prev) => ({ ...prev, ...newInfo }));
-            setCards(newCards);
+
+            setCurrentUser((prev) => ({ ...prev, ...newInfo.data }));
+            setCards(newCards.data);
         } catch (error) {
             console.error(error);
         }
     }
 
-    useEffect(() => {
-        function consl() {
-            console.log('storage changed');
-        }
-        window.addEventListener('storage', consl);
-        return () => {
-            window.removeEventListener('storage', consl);
-        };
-    }, [loggedIn]);
+
     useEffect(() => {
         if (loggedIn) {
             startRender();
@@ -79,23 +78,23 @@ function App() {
     }, [loggedIn]);
 
     const validationUser = React.useCallback(
-        async (token) => {
+        async () => {
             try {
-                const responce = await auth.validation(token);
-                const email = responce.data.email;
+                const response = await auth.validation();
+                const email = response.data.email;
                 setCurrentUser((prev) => ({ ...prev, email: email }));
                 setLogin(true);
                 navigate('/', { replace: true });
             } catch (error) {
-                console.error(error);
+                setLogin(false)
             }
         },
         [navigate]
     );
 
     useEffect(() => {
-        localStorage.token ? validationUser(localStorage.token) : setLogin(false);
-    }, [validationUser]);
+         validationUser()
+    }, []);
 
     async function handleSubmit(request, successMessage) {
         setLoading(true);
@@ -104,7 +103,6 @@ function App() {
             closeAllPopups();
             successMessage && setToolTip({ name: successMessage, link: successLogo });
         } catch (error) {
-            console.error(error);
             setToolTip({ name: 'Что-то пошло не так! Попробуйте ещё раз.', link: errorLogo });
         } finally {
             setLoading(false);
@@ -113,10 +111,11 @@ function App() {
     }
 
     function handleCardLike(card) {
-        const isLiked = card.likes.some((user) => user._id === currentUser._id);
+        const isLiked = card.likes.some((user) => user === currentUser._id);
         function makeRequest() {
             return Api.changeLikeCardStatus(card._id, isLiked).then((newCard) =>
-                setCards((prev) => prev.map((prevCard) => (prevCard._id === card._id ? newCard : prevCard)))
+  {         
+               setCards((prev) => prev.map((prevCard) => (prevCard._id === card._id ? newCard.data : prevCard)))}
             );
         }
 
@@ -126,7 +125,7 @@ function App() {
     function handleUpdateAvatar(info) {
         function makeRequest() {
             return Api.setProfileAvatar(info).then((newUserInfo) => {
-                setCurrentUser((prev) => ({ ...prev, ...newUserInfo }));
+                setCurrentUser((prev) => ({ ...prev, ...newUserInfo.data }));
             });
         }
         handleSubmit(makeRequest, 'Аватарка успешно обновлена.');
@@ -135,7 +134,7 @@ function App() {
     function handleAddCard(card) {
         function makeRequest() {
             return Api.addNewCard(card).then((newCard) => {
-                setCards((prev) => [newCard, ...prev]);
+                setCards((prev) => [newCard.data, ...prev]);
             });
         }
         handleSubmit(makeRequest, 'Карточка успешно добавлена.');
@@ -144,7 +143,7 @@ function App() {
     function handleUpdateUser(info) {
         function makeRequest() {
             return Api.setProfileInfo(info).then((newUserInfo) =>
-                setCurrentUser((prev) => ({ ...prev, ...newUserInfo }))
+                setCurrentUser((prev) => ({ ...prev, ...newUserInfo.data }))
             );
         }
         handleSubmit(makeRequest, 'Данный пользователя успешно обновлены.');
@@ -161,7 +160,7 @@ function App() {
 
     function handleRegistartion(info) {
         function makeRequest() {
-            return auth.registration(info).then(() => {
+            return auth.registration(info).then((res) => {
                 navigate('/sign-in', { replace: true });
             });
         }
@@ -170,9 +169,8 @@ function App() {
 
     function handleAuthorization(info) {
         function makeRequest() {
-            return auth.authorization(info).then(({ token }) => {
-                validationUser(token);
-                localStorage.setItem('token', token);
+            return auth.authorization(info).then((data) => {
+                validationUser();
             });
         }
         handleSubmit(makeRequest, 'Вы успешно авторизоризовались');

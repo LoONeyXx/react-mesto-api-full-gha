@@ -38,6 +38,7 @@ async function deleteCard(req, res, next) {
     if (card.owner.toString() === userId) {
       const data = await Card.deleteOne({ _id: cardId });
       res.status(200).send({ data });
+      return;
     }
     throw new AccessError('У вас нет прав на удаление чужих карточек');
   } catch (err) {
