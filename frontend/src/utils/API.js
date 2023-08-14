@@ -3,7 +3,7 @@ import { apiOptions } from './constants';
 class API {
     constructor(options) {
         this._headers = options.headers;
-        this._baseURL = `${options.server}/${options.cohort}`;
+        this._baseURL = `${options.server}`;
     }
 
     _request(path, options) {
@@ -13,12 +13,16 @@ class API {
     getCardsInfo() {
         return this._request('cards', {
             headers: this._headers,
+            credentials:'include',
+
         });
     }
 
     getProfileInfo() {
         return this._request('users/me', {
             headers: this._headers,
+            credentials:'include',
+
         });
     }
 
@@ -26,6 +30,7 @@ class API {
         return this._request('users/me', {
             method: 'PATCH',
             headers: this._headers,
+            credentials:'include',
             body: JSON.stringify({
                 name: info.name,
                 about: info.about,
@@ -36,6 +41,7 @@ class API {
     setProfileAvatar(info) {
         return this._request('users/me/avatar', {
             method: 'PATCH',
+            credentials:'include',
             headers: this._headers,
             body: JSON.stringify({
                 avatar: info.avatar,
@@ -47,6 +53,7 @@ class API {
         return this._request('cards', {
             method: 'POST',
             headers: this._headers,
+            credentials:'include',
             body: JSON.stringify({
                 name: info.name,
                 link: info.link,
@@ -58,6 +65,7 @@ class API {
         return this._request(`cards/${id}`, {
             method: 'DELETE',
             headers: this._headers,
+            credentials:'include',
         });
     }
 
@@ -69,6 +77,7 @@ class API {
         return this._request(`cards/${id}/likes`, {
             method: 'PUT',
             headers: this._headers,
+            credentials:'include',
         });
     }
 
@@ -76,6 +85,7 @@ class API {
         return this._request(`cards/${id}/likes`, {
             method: 'DELETE',
             headers: this._headers,
+            credentials:'include',
         });
     }
 

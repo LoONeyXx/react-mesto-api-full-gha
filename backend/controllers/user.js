@@ -74,12 +74,18 @@ async function login(req, res, next) {
       maxAge: 36000000,
       httpOnly: true,
     });
-    res.status(200).send({ _id: user._id });
+    res.status(200).send({ token, _id: user._id });
   } catch (err) {
     next(err);
   }
 }
-
+async function logout(req, res, next) {
+  try {
+    res.clearCookie('jwt').send({ message: 'Выход' });
+  } catch (error) {
+    next(error);
+  }
+}
 async function updateUser(req, res, next) {
   try {
     const { name, about, avatar } = req.body;
@@ -112,5 +118,5 @@ async function updateUser(req, res, next) {
 }
 
 export {
-  updateUser, addUser, getAllUsers, getUser, login,
+  updateUser, addUser, getAllUsers, getUser, login, logout,
 };

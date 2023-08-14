@@ -6,7 +6,9 @@ export default async function auth(req, res, next) {
     const token = req.cookies.jwt;
     if (!token) {
       next(new AuthError('Отсутствует токен'));
+      return;
     }
+
     const payload = jwt.verify(token, 'super-strong-secret');
     req.user = payload;
     next();

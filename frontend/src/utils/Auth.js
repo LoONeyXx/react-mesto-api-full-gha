@@ -1,13 +1,17 @@
 class Auth {
     constructor() {
-        this._baseURL = 'https://auth.nomoreparties.co';
-        this._headers = { 'Content-Type': 'application/json' };
+        this._baseURL = 'http://localhost:4000/';
+        this._headers = { 
+            "Accept":'application/json',
+            'Content-Type': 'application/json' };
     }
 
+
     authorization({ password, email }) {
-        return this._request('signin', {
+        return this._request('sign-in', {
             method: 'POST',
             headers: this._headers,
+            credentials:'include',
             body: JSON.stringify({
                 password: password,
                 email: email,
@@ -16,7 +20,7 @@ class Auth {
     }
 
     registration({ password, email }) {
-        return this._request('signup', {
+        return this._request('sign-up', {
             method: 'POST',
             headers: this._headers,
             body: JSON.stringify({
@@ -26,18 +30,26 @@ class Auth {
         });
     }
 
-    validation(token) {
+    validation() {
         return this._request('users/me', {
-            headers: { ...this.headers, Authorization: `Bearer ${token}` },
+            headers: { ...this.headers },
+            credentials:'include',
         });
     }
-
+ 
+    logout() {
+        return this._request('logout',{
+            headers: { ...this.headers },
+            credentials:'include',
+        })
+    }
+  
     _getResult(result) {
         return result.ok ? result.json() : Promise.reject(new Error(`Ошибка ${result.status}`));
     }
 
     _request(path, options) {
-        return fetch(`${this._baseURL}/${path}`, options).then(this._getResult);
+        return fetch(`${this._baseURL}${path}`, options).then(this._getResult);
     }
 }
 

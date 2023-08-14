@@ -2,8 +2,8 @@ import CurrentUserContext from '../contexts/CurrentUserContext';
 import React from 'react';
 const Card = React.memo(function Card({ card, onCardClick, onCardLike, onCardDelete }) {
     const currentUser = React.useContext(CurrentUserContext);
-    const isOwn = currentUser._id === card.owner._id;
-    const isLiked = card.likes.some((user) => user._id === currentUser._id);
+    const isOwn = currentUser._id === card.owner;
+    const isLiked = card.likes.some((user) => user === currentUser._id);
     const cardLikeButtonClassName = `button cards__like-btn ${isLiked && 'cards__like-btn_active'} no-highlight`;
 
     function handleClickDelete() {
