@@ -69,7 +69,7 @@ async function login(req, res, next) {
   try {
     const { email, password } = req.body;
     const user = await User.findUserByCredentials(email, password);
-    const token = jwt.sign({ _id: user._id }, 'super-strong-secret' || process.env.JWT_SECRET, { expiresIn: '7d' });
+    const token = jwt.sign({ _id: user._id }, process.env.JWT_TOKEN || 'super-strong-secret' || process.env.JWT_SECRET, { expiresIn: '7d' });
     res.cookie('jwt', token, {
       maxAge: 36000000,
       httpOnly: true,

@@ -1,4 +1,3 @@
-
 import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
@@ -17,7 +16,7 @@ app.disable('x-powered-by');
 app.use(cors({ origin: 'http://localhost:3000', credentials: true }));
 app.use(bodyParser.json());
 app.use(router);
-mongoose.connect(BASE_URL);
+mongoose.connect(process.env.DB_URL || BASE_URL);
 app.use(errors());
 app.use(errorHandler);
-app.listen(PORT);
+app.listen(process.env.PORT || PORT);
