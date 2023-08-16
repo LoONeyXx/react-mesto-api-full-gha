@@ -49,7 +49,7 @@ class Auth {
     }
 
     _request(path, options) {
-        return fetch(`${this._baseURL}${path}`, options).then(this._getResult);
+        return fetch(`${this._baseURL}/${path}`, options).then(this._getResult);
     }
 }
 
