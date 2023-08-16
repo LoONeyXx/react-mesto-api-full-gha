@@ -8,7 +8,7 @@ export const apiOptions = {
     headers: {
         'Content-Type': 'application/json',
     },
-    server: 'http://localhost:4000',
+    server: 'https://api.cardsplace.nomoreparties.co',
 };
 
 export const config = {
