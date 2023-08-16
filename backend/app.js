@@ -14,7 +14,7 @@ const app = express();
 app.use(helmet());
 app.use(cookieParser());
 app.disable('x-powered-by');
-app.use(cors({ credentials: true }));
+app.use(cors({ origin: 'https://cardsplace.nomoreparties.co', credentials: true }));
 app.use(bodyParser.json());
 app.use(requestLogger);
 app.use(router);
