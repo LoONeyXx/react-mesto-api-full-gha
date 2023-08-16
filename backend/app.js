@@ -8,7 +8,7 @@ import helmet from 'helmet';
 import { errors } from 'celebrate';
 import router from './routes/index.js';
 import errorHandler from './middlewares/error.js';
-import { DB_CONN, PORT } from './utils/config.js';
+import { BASE_URL, PORT } from './utils/config.js';
 const app = express();
 app.use(helmet());
 app.use(cookieParser());

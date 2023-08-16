@@ -5,7 +5,6 @@ import User from '../models/user.js';
 import ValidationError from '../errors/validation-error.js';
 import NotFoundError from '../errors/not-found-error.js';
 import AlreadyExistError from '../errors/already-exist-error.js';
-import { JWT_SECRET } from '../utils/config.js';
 
 async function getAllUsers(req, res, next) {
   try {
@@ -70,7 +69,7 @@ async function login(req, res, next) {
   try {
     const { email, password } = req.body;
     const user = await User.findUserByCredentials(email, password);
-    const token = jwt.sign({ _id: user._id }, JWT_SECRET, { expiresIn: '7d' });
+    const token = jwt.sign({ _id: user._id }, 'super-strong-secret', { expiresIn: '7d' });
     res.cookie('jwt', token, {
       maxAge: 36000000,
       httpOnly: true,
