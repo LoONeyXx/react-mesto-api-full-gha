@@ -9,7 +9,7 @@ export default async function auth(req, res, next) {
       return;
     }
 
-    const payload = jwt.verify(token, process.env.JWT_TOKEN || 'super-strong-secret' || process.env.JWT_SECRET);
+    const payload = jwt.verify(token, 'super-strong-secret');
     req.user = payload;
     next();
   } catch (err) {
