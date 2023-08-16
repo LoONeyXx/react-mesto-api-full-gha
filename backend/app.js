@@ -9,6 +9,7 @@ import { errors } from 'celebrate';
 import router from './routes/index.js';
 import errorHandler from './middlewares/error.js';
 import { BASE_URL, PORT } from './utils/config.js';
+
 const app = express();
 app.use(helmet());
 app.use(cookieParser());
@@ -16,7 +17,7 @@ app.disable('x-powered-by');
 app.use(cors({ origin: 'https://cardsplace.nomoreparties.co', credentials: true }));
 app.use(bodyParser.json());
 app.use(router);
-mongoose.connect('mongodb://127.0.0.1:27017/mestodb');
+mongoose.connect(BASE_URL);
 app.use(errors());
 app.use(errorHandler);
 app.listen(PORT);
