@@ -18,7 +18,7 @@ app.disable('x-powered-by');
 app.use(cors({ origin: 'https://cardsplace.nomoreparties.co', credentials: true }));
 app.use(bodyParser.json());
 app.use(router);
-mongoose.connect(DB_CONN);
+mongoose.connect('mongodb://127.0.0.1:27017/mestodb');
 app.use(errors());
 app.use(errorHandler);
 app.listen(PORT);
