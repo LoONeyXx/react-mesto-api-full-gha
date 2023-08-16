@@ -1,6 +1,6 @@
 class Auth {
     constructor() {
-        this._baseURL = 'http://api.cardsplace.nomoreparties.co';
+        this._baseURL = 'https://api.cardsplace.nomoreparties.co';
         this._headers = { 
             "Accept":'application/json',
             'Content-Type': 'application/json' };
