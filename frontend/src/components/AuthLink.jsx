@@ -4,16 +4,16 @@ export function AuthLink({ onExit }) {
     const [link, setLink] = React.useState({ path: '', text: '' });
     const location = useLocation();
     React.useEffect(() => {
-        if (location.pathname === '/sign-up') {
-            setLink({ path: 'sign-in', text: 'Войти' });
+        if (location.pathname === '/signup') {
+            setLink({ path: 'signin', text: 'Войти' });
             return;
         }
-        if (location.pathname === '/sign-in') {
-            setLink({ path: 'sign-up', text: 'Регистрация' });
+        if (location.pathname === '/signin') {
+            setLink({ path: 'signup', text: 'Регистрация' });
             return;
         }
 
-        setLink({ path: 'sign-in', text: 'Выйти' });
+        setLink({ path: 'signin', text: 'Выйти' });
     }, [location.pathname]);
 
     return (

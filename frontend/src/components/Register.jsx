@@ -13,7 +13,7 @@ function Register({ onSubmit, isLoading }) {
             <p className='register__footer-info'>
                 Уже зарегистрированы?{' '}
                 <Link
-                    to='/sign-in'
+                    to='/signin'
                     className='register__login-link'
                 >
                     {' '}
