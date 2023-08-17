@@ -10,7 +10,7 @@ export default async function auth(req, res, next) {
       return;
     }
 
-    const payload = jwt.verify(token, JWT_SECRET || 'super-strong-secret');
+    const payload = jwt.verify(token, JWT_SECRET);
     req.user = payload;
     next();
   } catch (err) {

@@ -13,8 +13,8 @@ router.get('/crash-test', () => {
     throw new Error('Сервер сейчас упадёт');
   }, 0);
 });
-router.post('/sign-up', userValidatorAuth(), addUser);
-router.post('/sign-in', userValidatorAuth(), login);
+router.post('/signup', userValidatorAuth(), addUser);
+router.post('/signin', userValidatorAuth(), login);
 router.use(auth);
 router.get('/logout', logout);
 router.get('/users', getAllUsers);
