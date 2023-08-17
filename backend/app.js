@@ -16,11 +16,7 @@ app.disable('x-powered-by');
 app.use(cors({ origin: 'https://cardsplace.nomoreparties.co', credentials: true }));
 app.use(bodyParser.json());
 app.use(requestLogger);
-app.get('/crash-test', () => {
-  setTimeout(() => {
-    throw new Error('Сервер сейчас упадёт');
-  }, 0);
-});
+
 app.use(router);
 mongoose.connect(process.env.DB_CONN);
 app.use(errorLogger);
