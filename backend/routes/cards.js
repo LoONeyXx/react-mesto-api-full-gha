@@ -7,9 +7,10 @@ import {
   addLike,
   removeLike,
 } from '../controllers/cards.js';
+import auth from '../middlewares/auth.js';
 
 const router = express.Router();
-
+router.use(auth);
 router.get('/cards', getCards);
 router.post('/cards', bodyCardValidator(), addCard);
 router.delete('/cards/:cardId', idCardValidator(), deleteCard);
