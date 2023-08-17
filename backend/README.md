@@ -2,6 +2,10 @@
 # Проект Mesto фронтенд + бэкенд
 https://github.com/LoONeyXx/express-mesto-gha
 
+IP  158.160.50.88
+Frontend  https://cardsplace.nomoreparties.co
+Backend  https://api.cardsplace.nomoreparties.co
+
 
 ## Директории
 
