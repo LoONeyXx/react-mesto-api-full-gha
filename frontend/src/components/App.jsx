@@ -228,13 +228,13 @@ function App() {
 
                 {!loggedIn && (
                     <Route
-                        path='sign-up'
+                        path='signup'
                         element={<Register onSubmit={handleRegistartion} />}
                     />
                 )}
                 {!loggedIn && (
                     <Route
-                        path='sign-in'
+                        path='signin'
                         element={<Login onSubmit={handleAuthorization} />}
                     />
                 )}
