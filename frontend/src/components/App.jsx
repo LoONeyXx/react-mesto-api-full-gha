@@ -89,7 +89,7 @@ function App() {
                 setLogin(false)
             }
         },
-        [navigate]
+        []
     );
 
     useEffect(() => {
@@ -161,7 +161,7 @@ function App() {
     function handleRegistartion(info) {
         function makeRequest() {
             return auth.registration(info).then((res) => {
-                navigate('/sign-in', { replace: true });
+                navigate('/signin', { replace: true });
             });
         }
         handleSubmit(makeRequest, 'Вы успешно зарегистрировались!');
