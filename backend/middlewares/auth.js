@@ -1,5 +1,6 @@
 import jwt from 'jsonwebtoken';
 import AuthError from '../errors/auth-error.js';
+import { JWT_SECRET } from '../utils/config.js';
 
 export default async function auth(req, res, next) {
   try {
@@ -9,7 +10,7 @@ export default async function auth(req, res, next) {
       return;
     }
 
-    const payload = jwt.verify(token, 'super-strong-secret');
+    const payload = jwt.verify(token, JWT_SECRET);
     req.user = payload;
     next();
   } catch (err) {
