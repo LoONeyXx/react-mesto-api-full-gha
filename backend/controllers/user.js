@@ -6,6 +6,7 @@ import ValidationError from '../errors/validation-error.js';
 import NotFoundError from '../errors/not-found-error.js';
 import AlreadyExistError from '../errors/already-exist-error.js';
 import { JWT_SECRET } from '../utils/config.js';
+
 async function getAllUsers(req, res, next) {
   try {
     const users = await User.find({});
