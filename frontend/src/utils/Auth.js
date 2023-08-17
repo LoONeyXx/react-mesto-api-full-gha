@@ -8,7 +8,7 @@ class Auth {
 
 
     authorization({ password, email }) {
-        return this._request('sign-in', {
+        return this._request('signin', {
             method: 'POST',
             headers: this._headers,
             credentials:'include',
@@ -20,7 +20,7 @@ class Auth {
     }
 
     registration({ password, email }) {
-        return this._request('sign-up', {
+        return this._request('signup', {
             method: 'POST',
             headers: this._headers,
             body: JSON.stringify({
